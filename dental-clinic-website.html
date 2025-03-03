@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marthynenko Dental Clinic</title>
+    <style>
+        :root {
+            --primary-color: #4a9dd1;
+            --secondary-color: #e8f4fc;
+            --accent-color: #2c7bb5;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu ul li {
+            margin: 20px 0;
+        }
+        
+        .mobile-menu ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+        
+        .contact-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-column a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Marthynenko<span>Dental</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#about">Про нас</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+                <div class="mobile-menu-btn">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">&times;</div>
+        <ul>
+            <li><a href="#home" class="mobile-link">Головна</a></li>
+            <li><a href="#services" class="mobile-link">Послуги</a></li>
+            <li><a href="#about" class="mobile-link">Про нас</a></li>
+            <li><a href="#contact" class="mobile-link">Контакти</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Ваша посмішка - наш пріоритет</h1>
+            <p>Marthynenko Dental Clinic - сучасна стоматологія з індивідуальним підходом до кожного пацієнта</p>
+            <a href="#contact" class="btn">Записатися на прийом</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наші послуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Профілактика</h3>
+                    <p>Професійна чистка зубів, фторування, гігієнічні консультації та регулярні огляди для підтримки здоров'я ротової порожнини.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Діагностика</h3>
+                    <p>Комплексне обстеження, рентгенографія, 3D-діагностика та консультації для точного визначення проблеми.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Лікування</h3>
+                    <p>Терапевтична та хірургічна стоматологія, лікування карієсу, пульпіту та інших захворювань зубів.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Естетична стоматологія</h3>
+                    <p>Відбілювання зубів, встановлення вінірів, корекція форми зубів для досягнення ідеальної посмішки.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Протезування</h3>
+                    <p>Імплантація, коронки, мости та знімні протези для відновлення функцій та естетики зубного ряду.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Ортодонтія</h3>
+                    <p>Виправлення прикусу та вирівнювання зубів за допомогою брекет-систем і елайнерів.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Про нашу клініку</h2>
+                    <p>Стоматологічна клініка Marthynenko Dental Clinic - це сучасний медичний заклад, який надає повний спектр стоматологічних послуг за найвищими стандартами якості.</p>
+                    <p>Головний лікар клініки - Мартиненко Поліна Юріївна, кваліфікований спеціаліст з багаторічним досвідом роботи. Під її керівництвом працює команда професіоналів, які постійно підвищують свою кваліфікацію та використовують найсучасніші методики лікування.</p>
+                    <p>Наша клініка оснащена найновішим обладнанням, яке дозволяє проводити діагностику та лікування максимально ефективно та безболісно. Ми дотримуємося міжнародних протоколів лікування та використовуємо тільки сертифіковані матеріали.</p>
+                    <p>Наш підхід - індивідуальний план лікування для кожного пацієнта, комфортна атмосфера та чесні ціни.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/400/320" alt="Стоматологічна клініка" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Контакти</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Адреса</h3>
+                    <p>вул. Стоматологічна, 10</p>
+                    <p>Київ, Україна</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Телефон</h3>
+                    <p>+380 44 123 4567</p>
+                    <p>+380 67 890 1234</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Графік роботи</h3>
+                    <p>Пн-Пт: 9:00 - 20:00</p>
+                    <p>Сб: 9:00 - 16:00</p>
+                    <p>Нд: вихідний</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Запис на прийом</h3>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Ім'я</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Послуга</label>
+                        <select id="service" class="form-control">
+                            <option value="">Оберіть послугу</option>
+                            <option value="prophylaxis">Профілактика</option>
+                            <option value="diagnosis">Діагностика</option>
+                            <option value="treatment">Лікування</option>
+                            <option value="aesthetic">Естетична стоматологія</option>
+                            <option value="prosthetics">Протезування</option>
+                            <option value="orthodontics">Ортодонтія</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Додаткова інформація</label>
+                        <textarea id="message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Надіслати</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-close">&times;</div>
+        <div class="modal-content">
+            <h3>Дякуємо за запис!</h3>
+            <p>Ваша заявка успішно відправлена. Наш адміністратор зв'яжеться з вами протягом робочого дня для підтвердження запису.</p>
+            <button class="btn modal-ok">OK</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Marthynenko Dental Clinic</h3>
+                    <p>Ваша посмішка - наш пріоритет</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Швидкі посилання</h3>
+                    <ul>
+                        <li><a href="#home">Головна</a></li>
+                        <li><a href="#services">Послуги</a></li>
+                        <li><a href="#about">Про нас</a></li>
+                        <li><a href="#contact">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Соціальні мережі</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Marthynenko Dental Clinic. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission and modal
+        const appointmentForm = document.getElementById('appointmentForm');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const modalClose = document.querySelector('.modal-close');
+        const modalOk = document.querySelector('.modal-ok');
+
+        appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            // For demonstration, we'll just show the confirmation modal
+            confirmationModal.classList.add('active');
+            
+            // Reset form
+            appointmentForm.reset();
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            confirmationModal.classList.remove('active');
+        });
+
+        modalOk.addEventListener('click', () => {
+            confirmationModal.classList.remove('active');
+        });
+
+        // Close modal if clicked outside
+        window.addEventListener('click', (e) => {
+            if (e.target === confirmationModal) {
+                confirmationModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
