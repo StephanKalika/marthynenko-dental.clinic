@@ -332,6 +332,23 @@
             color: white;
         }
         
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(74, 157, 209, 0.2);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary-color);
@@ -514,29 +531,30 @@
                 <form id="appointmentForm">
                     <div class="form-group">
                         <label for="name">Ім'я</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" class="form-control" required>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="service">Послуга</label>
-                        <select id="service" class="form-control">
+                        <select id="service" name="service" class="form-control">
                             <option value="">Оберіть послугу</option>
-                            <option value="prophylaxis">Профілактика</option>
-                            <option value="diagnosis">Діагностика</option>
-                            <option value="treatment">Лікування</option>
-                            <option value="aesthetic">Естетична стоматологія</option>
-                            <option value="prosthetics">Протезування</option>
-                            <option value="orthodontics">Ортодонтія</option>
+                            <option value="Профілактика">Профілактика</option>
+                            <option value="Діагностика">Діагностика</option>
+                            <option value="Лікування">Лікування</option>
+                            <option value="Естетична стоматологія">Естетична стоматологія</option>
+                            <option value="Протезування">Протезування</option>
+                            <option value="Ортодонтія">Ортодонтія</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="message">Додаткова інформація</label>
-                        <textarea id="message" class="form-control"></textarea>
+                        <textarea id="message" name="message" class="form-control"></textarea>
                     </div>
-                    <button type="submit" class="btn">Надіслати</button>
+                    <div class="spinner" id="submitSpinner"></div>
+                    <button type="submit" class="btn" id="submitBtn">Надіслати</button>
                 </form>
             </div>
         </div>
@@ -548,6 +566,16 @@
         <div class="modal-content">
             <h3>Дякуємо за запис!</h3>
             <p>Ваша заявка успішно відправлена. Наш адміністратор зв'яжеться з вами протягом робочого дня для підтвердження запису.</p>
+            <button class="btn modal-ok">OK</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="errorModal">
+        <div class="modal-close">&times;</div>
+        <div class="modal-content">
+            <h3>Помилка відправки</h3>
+            <p>На жаль, під час відправки форми сталася помилка. Будь ласка, спробуйте ще раз або зателефонуйте нам за номером +380 44 123 4567.</p>
             <button class="btn modal-ok">OK</button>
         </div>
     </div>
@@ -623,36 +651,105 @@
             });
         });
 
-        // Form submission and modal
+        // Form submission via Google Forms
         const appointmentForm = document.getElementById('appointmentForm');
         const confirmationModal = document.getElementById('confirmationModal');
-        const modalClose = document.querySelector('.modal-close');
-        const modalOk = document.querySelector('.modal-ok');
+        const errorModal = document.getElementById('errorModal');
+        const modalClose = document.querySelectorAll('.modal-close');
+        const modalOkButtons = document.querySelectorAll('.modal-ok');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Replace with your Google Form URL and field IDs
+        // You need to inspect your Google Form to get the correct entry.X values
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScrLn_KM1MenD7PgEdkOA8-nZJZTVLP23pBUbLpJBVuYguuOg/formResponse';
+        
+        // Map your form fields to Google Form entry IDs
+        // These will need to be replaced with your actual Google Form entry IDs
+        const formFieldMapping = {
+            'name': 'entry.2144559352',    // Replace with actual entry ID
+            'phone': 'entry.105039362',   // Replace with actual entry ID
+            'service': 'entry.345678901', // Replace with actual entry ID
+            'message': 'entry.83823172'  // Replace with actual entry ID
+        };
 
         appointmentForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // In a real application, you would send the form data to a server here
-            // For demonstration, we'll just show the confirmation modal
-            confirmationModal.classList.add('active');
+            // Show spinner, hide submit button
+            submitSpinner.style.display = 'block';
+            submitBtn.disabled = true;
             
-            // Reset form
-            appointmentForm.reset();
+            // Collect form data
+            const formData = new FormData(appointmentForm);
+            
+            // Create an object for Google Forms submission
+            const googleFormData = new FormData();
+            
+            // Map our form fields to Google Form fields
+            for (const [name, value] of formData.entries()) {
+                if (formFieldMapping[name]) {
+                    googleFormData.append(formFieldMapping[name], value);
+                }
+            }
+            
+            // In a real implementation, we would submit to Google Forms:
+            // For demonstration, we'll simulate a successful submission
+            // In production, you would uncomment this code and use your actual Google Form URL and field mappings
+            
+            /*
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors', // Google Forms requires no-cors mode
+                body: googleFormData
+            })
+            .then(response => {
+                // Show confirmation
+                submitSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                confirmationModal.classList.add('active');
+                appointmentForm.reset();
+            })
+            .catch(error => {
+                // Show error
+                submitSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                errorModal.classList.add('active');
+                console.error('Error:', error);
+            });
+            */
+            
+            // For demonstration, simulate a successful submission after 1 second
+            setTimeout(() => {
+                submitSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                confirmationModal.classList.add('active');
+                appointmentForm.reset();
+            }, 1000);
         });
 
-        // Close modal
-        modalClose.addEventListener('click', () => {
-            confirmationModal.classList.remove('active');
+        // Close modals
+        modalClose.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                confirmationModal.classList.remove('active');
+                errorModal.classList.remove('active');
+            });
         });
 
-        modalOk.addEventListener('click', () => {
-            confirmationModal.classList.remove('active');
+        modalOkButtons.forEach(okBtn => {
+            okBtn.addEventListener('click', () => {
+                confirmationModal.classList.remove('active');
+                errorModal.classList.remove('active');
+            });
         });
 
         // Close modal if clicked outside
         window.addEventListener('click', (e) => {
             if (e.target === confirmationModal) {
                 confirmationModal.classList.remove('active');
+            }
+            if (e.target === errorModal) {
+                errorModal.classList.remove('active');
             }
         });
     </script>
