@@ -697,7 +697,7 @@
             // For demonstration, we'll simulate a successful submission
             // In production, you would uncomment this code and use your actual Google Form URL and field mappings
             
-            /*
+            
             fetch(googleFormUrl, {
                 method: 'POST',
                 mode: 'no-cors', // Google Forms requires no-cors mode
@@ -717,15 +717,6 @@
                 errorModal.classList.add('active');
                 console.error('Error:', error);
             });
-            */
-            
-            // For demonstration, simulate a successful submission after 1 second
-            setTimeout(() => {
-                submitSpinner.style.display = 'none';
-                submitBtn.disabled = false;
-                confirmationModal.classList.add('active');
-                appointmentForm.reset();
-            }, 1000);
         });
 
         // Close modals
