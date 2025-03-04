@@ -49,17 +49,39 @@
             padding: 20px 0;
         }
         
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
-        }
-        
+		.logo {
+			display: flex;
+			flex-direction: column; /* Слоган під логотипом */
+			text-decoration: none;
+			line-height: 1.2;
+		}
+
+		.logo-main {
+			font-size: 24px;
+			font-weight: bold;
+			color: var(--primary-color); /* #4a9dd1 */
+		}
+
+		.logo-main span {
+			color: var(--accent-color); /* #2c7bb5 для частини тексту, якщо хочете різний колір */
+		}
+
+		.logo-slogan {
+			font-size: 12px; /* Дрібний шрифт для слогану */
+			color: var(--text-color); /* #333 */
+			margin-top: 4px; /* Відступ від основного тексту */
+		}
+
+		/* Адаптація для мобільних пристроїв */
+		@media (max-width: 768px) {
+			.logo-main {
+				font-size: 20px;
+			}
+			.logo-slogan {
+				font-size: 10px;
+			}
+		}
+		
         .nav-links {
             display: flex;
             list-style: none;
@@ -423,7 +445,10 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Marthynenko<span>Dental</span></a>
+				<a href="#" class="logo">
+								<span class="logo-main">Marthynenko Dental Clinic</span>
+								<span class="logo-slogan">Ваша посмішка — наш пріоритет</span>
+				</a>
                 <ul class="nav-links">
                     <li><a href="#home">Головна</a></li>
                     <li><a href="#services">Послуги</a></li>
