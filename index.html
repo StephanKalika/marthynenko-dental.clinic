@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marthynenko Dental Clinic</title>
-    <!-- Firebase SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-firestore-compat.min.js"></script>
+    <!-- AWS SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1095.0/aws-sdk.min.js"></script>
     <style>
         :root {
             --primary-color: #4a9dd1;
@@ -616,113 +615,86 @@
     </footer>
 
     <script>
-        // Ініціалізація Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBGXcbYYEN9M7MZr_cG6Kk5AWNsdQh2AoY",
-            authDomain: "marthynenko-dental-clinic.firebaseapp.com",
-            projectId: "marthynenko-dental-clinic",
-            storageBucket: "marthynenko-dental-clinic.firebasestorage.app",
-            messagingSenderId: "570167302380",
-            appId: "1:570167302380:web:5816bdc5da227f9a6f6dc9",
-            measurementId: "G-GMFZYXJESZ"
-        };
+	// Конфігурація AWS
+		AWS.config.region = 'eu-west-1'; // Ваш регіон (замініть якщо використовуєте інший)
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+			IdentityPoolId: 'eu-west-1_X4P3oRwe7', // Замініть на ваш IdentityPoolId
+		});
 
-        // Ініціалізуємо Firebase
-        firebase.initializeApp(firebaseConfig);
-        
-        // Отримуємо доступ до Firestore
-        const db = firebase.firestore();
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const mobileMenuClose = document.querySelector('.mobile-menu-close');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+		// Ініціалізація DynamoDB
+		const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
+		// Обробка форми запису
+		const appointmentForm = document.getElementById('appointmentForm');
+		const confirmationModal = document.getElementById('confirmationModal');
+		const errorModal = document.getElementById('errorModal');
+		const modalClose = document.querySelectorAll('.modal-close');
+		const modalOkButtons = document.querySelectorAll('.modal-ok');
+		const submitSpinner = document.getElementById('submitSpinner');
+		const submitBtn = document.getElementById('submitBtn');
 
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
+		// Функція для генерації унікального ID запису
+		function generateAppointmentId() {
+			return 'app_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+		}
 
-        // Close mobile menu when clicking on a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
+		appointmentForm.addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			// Показуємо спіннер, ховаємо кнопку
+			submitSpinner.style.display = 'block';
+			submitBtn.disabled = true;
+			
+			// Збираємо дані форми
+			const name = document.getElementById('name').value;
+			const phone = document.getElementById('phone').value;
+			const service = document.getElementById('service').value;
+			const message = document.getElementById('message').value;
+			const timestamp = new Date().toISOString();
+			const appointmentId = generateAppointmentId();
+			
+			// Створюємо об'єкт для запису в базу даних
+			const appointmentData = {
+				appointment_id: appointmentId, // Первинний ключ
+				name: name,
+				phone: phone,
+				service: service,
+				message: message || "Без додаткової інформації",
+				timestamp: timestamp,
+				status: "new", // Статус для відстеження (new, contacted, scheduled, completed)
+				clinic: "Marthynenko Dental",
+				created_at: new Date().toISOString(),
+				patient_id: phone.replace(/[^0-9]/g, '') // Використовуємо номер телефону як ID пацієнта (видаляємо все крім цифр)
+			};
+			
+			// Параметри для запису у DynamoDB
+			const params = {
+				TableName: 'dental_appointments',
+				Item: appointmentData
+			};
+			
+			dynamoDB.put(params, function(err, data) {
+				if (err) {
+					// Помилка
+					console.error("Помилка додавання запису: ", err);
+					submitSpinner.style.display = 'none';
+					submitBtn.disabled = false;
+					errorModal.classList.add('active');
+					
+					// Додаткове логування для відлагодження
+					console.log("Деталі помилки:", JSON.stringify(err));
+				} else {
+					// Успішно збережено
+					console.log("Запис створено успішно:", appointmentId);
+					submitSpinner.style.display = 'none';
+					submitBtn.disabled = false;
+					confirmationModal.classList.add('active');
+					appointmentForm.reset();
+				}
+			});
+		});
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Відправка форми до Firebase Firestore
-        const appointmentForm = document.getElementById('appointmentForm');
-        const confirmationModal = document.getElementById('confirmationModal');
-        const errorModal = document.getElementById('errorModal');
-        const modalClose = document.querySelectorAll('.modal-close');
-        const modalOkButtons = document.querySelectorAll('.modal-ok');
-        const submitSpinner = document.getElementById('submitSpinner');
-        const submitBtn = document.getElementById('submitBtn');
-
-        appointmentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Показуємо спіннер, ховаємо кнопку
-            submitSpinner.style.display = 'block';
-            submitBtn.disabled = true;
-            
-            // Збираємо дані форми
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            const timestamp = new Date();
-            
-            // Створюємо об'єкт для запису в базу даних
-            const appointmentData = {
-                name: name,
-                phone: phone,
-                service: service,
-                message: message,
-                timestamp: timestamp,
-                status: "new" // Статус для відстеження (new, contacted, scheduled, completed)
-            };
-            
-            // Зберігаємо в Firestore
-            db.collection("appointments").add(appointmentData)
-                .then((docRef) => {
-                    // Успішно збережено
-                    console.log("Запис створено з ID: ", docRef.id);
-                    submitSpinner.style.display = 'none';
-                    submitBtn.disabled = false;
-                    confirmationModal.classList.add('active');
-                    appointmentForm.reset();
-                })
-                .catch((error) => {
-                    // Помилка
-                    console.error("Помилка додавання запису: ", error);
-                    submitSpinner.style.display = 'none';
-                    submitBtn.disabled = false;
-                    errorModal.classList.add('active');
-                });
-        });
-
+	
         // Close modals
         modalClose.forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
