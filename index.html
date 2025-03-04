@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marthynenko Dental Clinic</title>
+    <!-- Firebase SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-firestore-compat.min.js"></script>
     <style>
         :root {
             --primary-color: #4a9dd1;
@@ -613,6 +616,23 @@
     </footer>
 
     <script>
+        // Ініціалізація Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBGXcbYYEN9M7MZr_cG6Kk5AWNsdQh2AoY",
+            authDomain: "marthynenko-dental-clinic.firebaseapp.com",
+            projectId: "marthynenko-dental-clinic",
+            storageBucket: "marthynenko-dental-clinic.firebasestorage.app",
+            messagingSenderId: "570167302380",
+            appId: "1:570167302380:web:5816bdc5da227f9a6f6dc9",
+            measurementId: "G-GMFZYXJESZ"
+        };
+
+        // Ініціалізуємо Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Отримуємо доступ до Firestore
+        const db = firebase.firestore();
+        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -651,7 +671,7 @@
             });
         });
 
-        // Form submission via Google Forms
+        // Відправка форми до Firebase Firestore
         const appointmentForm = document.getElementById('appointmentForm');
         const confirmationModal = document.getElementById('confirmationModal');
         const errorModal = document.getElementById('errorModal');
@@ -660,63 +680,47 @@
         const submitSpinner = document.getElementById('submitSpinner');
         const submitBtn = document.getElementById('submitBtn');
 
-        // Replace with your Google Form URL and field IDs
-        // You need to inspect your Google Form to get the correct entry.X values
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScrLn_KM1MenD7PgEdkOA8-nZJZTVLP23pBUbLpJBVuYguuOg/formResponse';
-        
-        // Map your form fields to Google Form entry IDs
-        // These will need to be replaced with your actual Google Form entry IDs
-        const formFieldMapping = {
-            'name': 'entry.2144559352',    // Replace with actual entry ID
-            'phone': 'entry.105039362',   // Replace with actual entry ID
-            'service': 'entry.345678901', // Replace with actual entry ID
-            'message': 'entry.83823172'  // Replace with actual entry ID
-        };
-
         appointmentForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show spinner, hide submit button
+            // Показуємо спіннер, ховаємо кнопку
             submitSpinner.style.display = 'block';
             submitBtn.disabled = true;
             
-            // Collect form data
-            const formData = new FormData(appointmentForm);
+            // Збираємо дані форми
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            const timestamp = new Date();
             
-            // Create an object for Google Forms submission
-            const googleFormData = new FormData();
+            // Створюємо об'єкт для запису в базу даних
+            const appointmentData = {
+                name: name,
+                phone: phone,
+                service: service,
+                message: message,
+                timestamp: timestamp,
+                status: "new" // Статус для відстеження (new, contacted, scheduled, completed)
+            };
             
-            // Map our form fields to Google Form fields
-            for (const [name, value] of formData.entries()) {
-                if (formFieldMapping[name]) {
-                    googleFormData.append(formFieldMapping[name], value);
-                }
-            }
-            
-            // In a real implementation, we would submit to Google Forms:
-            // For demonstration, we'll simulate a successful submission
-            // In production, you would uncomment this code and use your actual Google Form URL and field mappings
-            
-            
-            fetch(googleFormUrl, {
-                method: 'POST',
-                mode: 'no-cors', // Google Forms requires no-cors mode
-                body: googleFormData
-            })
-            .then(response => {
-                // Show confirmation
-                submitSpinner.style.display = 'none';
-                submitBtn.disabled = false;
-                confirmationModal.classList.add('active');
-                appointmentForm.reset();
-            })
-            .catch(error => {
-                // Show error
-                submitSpinner.style.display = 'none';
-                submitBtn.disabled = false;
-                errorModal.classList.add('active');
-                console.error('Error:', error);
-            });
+            // Зберігаємо в Firestore
+            db.collection("appointments").add(appointmentData)
+                .then((docRef) => {
+                    // Успішно збережено
+                    console.log("Запис створено з ID: ", docRef.id);
+                    submitSpinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                    confirmationModal.classList.add('active');
+                    appointmentForm.reset();
+                })
+                .catch((error) => {
+                    // Помилка
+                    console.error("Помилка додавання запису: ", error);
+                    submitSpinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                    errorModal.classList.add('active');
+                });
         });
 
         // Close modals
