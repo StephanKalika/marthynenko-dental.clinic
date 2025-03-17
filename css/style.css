@@ -265,6 +265,13 @@ section {
     font-size: 32px;
     border-radius: 50%;
     transition: all 0.3s ease;
+    display: flex;          /* Додано */
+    align-items: center;    /* Додано */
+    justify-content: center; /* Додано */
+}
+
+.feature-icon i {
+    line-height: 1;  /* Додано */
 }
 
 .feature-box:hover .feature-icon {
