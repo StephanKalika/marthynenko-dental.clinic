@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наші лікарі - ДентаПлюс</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Шапка сайту (така ж як на головній) -->
+    <header>
+        <!-- Код шапки такий самий, як на головній сторінці -->
+    </header>
+
+    <!-- Заголовок сторінки -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Наші лікарі</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Головна</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Наші лікарі</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Наші лікарі -->
+    <section class="doctors-list">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наша команда</h2>
+                <p>Професіонали, які дбають про ваше здоров'я</p>
+            </div>
+            
+            <!-- Лікар 1 -->
+            <div id="doctor1" class="doctor-detail">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor1-large.jpg" alt="Іванов Іван Іванович">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Іванов Іван Іванович</h3>
+                            <p class="doctor-position">Головний лікар, стоматолог-терапевт</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 15 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Іван Іванович - висококваліфікований стоматолог-терапевт з 15-річним досвідом роботи. Спеціалізується на лікуванні карієсу, пульпіту, періодонтиту та естетичній реставрації зубів.</p>
+                                <p>Регулярно відвідує міжнародні стоматологічні конференції та семінари для підвищення кваліфікації. Володіє сучасними методиками лікування зубів.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Лікування карієсу будь-якої складності</li>
+                                    <li><i class="fas fa-check-circle"></i> Ендодонтичне лікування (лікування каналів)</li>
+                                    <li><i class="fas fa-check-circle"></i> Естетична реставрація зубів</li>
+                                    <li><i class="fas fa-check-circle"></i> Професійна гігієна порожнини рота</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лікар 2 -->
+            <div id="doctor2" class="doctor-detail">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor2-large.jpg" alt="Петренко Марія Олександрівна">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Петренко Марія Олександрівна</h3>
+                            <p class="doctor-position">Стоматолог-ортопед</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 12 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Марія Олександрівна - досвідчений стоматолог-ортопед, яка спеціалізується на всіх видах протезування зубів. Має великий досвід у виготовленні коронок, мостів та знімних протезів.</p>
+                                <p>Постійно вдосконалює свої навички, відвідуючи спеціалізовані курси та семінари. Використовує в роботі сучасні матеріали та технології.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Виготовлення коронок (металокерамічних, цирконієвих, E-max)</li>
+                                    <li><i class="fas fa-check-circle"></i> Мостоподібні протези</li>
+                                    <li><i class="fas fa-check-circle"></i> Знімні протези (бюгельні, нейлонові)</li>
+                                    <li><i class="fas fa-check-circle"></i> Протезування на імплантах</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лікар 3 -->
+            <div id="doctor3" class="doctor-detail">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor3-large.jpg" alt="Сидоренко Олег Петрович">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Сидоренко Олег Петрович</h3>
+                            <p class="doctor-position">Стоматолог-хірург, імплантолог</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 10 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Олег Петрович - висококваліфікований стоматолог-хірург та імплантолог. Спеціалізується на видаленні зубів будь-якої складності та встановленні імплантів.</p>
+                                <p>Має великий досвід у проведенні хірургічних втручань в порожнині рота. Постійно підвищує свою кваліфікацію на міжнародних конференціях та семінарах.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Видалення зубів будь-якої складності</li>
+                                    <li><i class="fas fa-check-circle"></i> Встановлення імплантів</li>
+                                    <li><i class="fas fa-check-circle"></i> Синус-ліфтинг</li>
+                                    <li><i class="fas fa-check-circle"></i> Кісткова пластика</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лікар 4 -->
+            <div id="doctor4" class="doctor-detail">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor4-large.jpg" alt="Коваленко Наталія Ігорівна">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Коваленко Наталія Ігорівна</h3>
+                            <p class="doctor-position">Стоматолог-терапевт, пародонтолог</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 8 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Наталія Ігорівна - кваліфікований стоматолог-терапевт та пародонтолог. Спеціалізується на лікуванні захворювань ясен та слизової оболонки порожнини рота.</p>
+                                <p>Має великий досвід у лікуванні гінгівіту, пародонтиту та інших захворювань пародонта. Постійно вдосконалює свої навички на спеціалізованих курсах.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Лікування гінгівіту</li>
+                                    <li><i class="fas fa-check-circle"></i> Лікування пародонтиту</li>
+                                    <li><i class="fas fa-check-circle"></i> Професійна гігієна порожнини рота</li>
+                                    <li><i class="fas fa-check-circle"></i> Лікування захворювань слизової оболонки</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лікар 5 -->
+            <div id="doctor5" class="doctor-detail">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor5-large.jpg" alt="Мельник Андрій Володимирович">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Мельник Андрій Володимирович</h3>
+                            <p class="doctor-position">Стоматолог-ортодонт</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 9 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Андрій Володимирович - досвідчений стоматолог-ортодонт, який спеціалізується на виправленні прикусу у дітей та дорослих. Має великий досвід роботи з різними брекет-системами та елайнерами.</p>
+                                <p>Регулярно відвідує міжнародні конференції та семінари з ортодонтії для вдосконалення своїх навичок. Використовує в роботі сучасні методики та матеріали.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Діагностика та лікування аномалій прикусу</li>
+                                    <li><i class="fas fa-check-circle"></i> Встановлення брекет-систем (металевих, керамічних, сапфірових)</li>
+                                    <li><i class="fas fa-check-circle"></i> Лікування за допомогою елайнерів</li>
+                                    <li><i class="fas fa-check-circle"></i> Ретенційний період після ортодонтичного лікування</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лікар 6 -->
+            <div id="doctor6" class="doctor-detail">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="doctor-image">
+                            <img src="images/doctor6-large.jpg" alt="Шевченко Олена Миколаївна">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="doctor-info">
+                            <h3>Шевченко Олена Миколаївна</h3>
+                            <p class="doctor-position">Дитячий стоматолог</p>
+                            <div class="doctor-experience">
+                                <p><strong>Досвід роботи:</strong> 7 років</p>
+                                <p><strong>Освіта:</strong> Національний медичний університет ім. О.О. Богомольця</p>
+                            </div>
+                            <div class="doctor-description">
+                                <p>Олена Миколаївна - кваліфікований дитячий стоматолог, яка знаходить підхід до кожної дитини. Спеціалізується на лікуванні та профілактиці стоматологічних захворювань у дітей різного віку.</p>
+                                <p>Має великий досвід роботи з дітьми, вміє створити комфортну атмосферу під час прийому. Постійно вдосконалює свої навички на спеціалізованих курсах з дитячої стоматології.</p>
+                            </div>
+                            <div class="doctor-specialization">
+                                <h4>Спеціалізація:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Профілактичні огляди дітей</li>
+                                    <li><i class="fas fa-check-circle"></i> Лікування карієсу молочних та постійних зубів</li>
+                                    <li><i class="fas fa-check-circle"></i> Герметизація фісур</li>
+                                    <li><i class="fas fa-check-circle"></i> Навчання дітей правильній гігієні порожнини рота</li>
+                                </ul>
+                            </div>
+                            <div class="doctor-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">Записатися на прийом</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма запису на прийом -->
+    <section class="appointment">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="appointment-content">
+                        <h2>Запишіться на прийом</h2>
+                        <p>Заповніть форму і наш адміністратор зв'яжеться з вами для підтвердження запису</p>
+                        <ul class="appointment-benefits">
+                            <li><i class="fas fa-check-circle"></i> Швидкий запис на зручний час</li>
+                            <li><i class="fas fa-check-circle"></i> Консультація спеціаліста</li>
+                            <li><i class="fas fa-check-circle"></i> Індивідуальний план лікування</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="appointment-form">
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Ваше ім'я" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Ваш email">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Оберіть лікаря</option>
+                                    <option value="doctor1">Іванов Іван Іванович</option>
+                                    <option value="doctor2">Петренко Марія Олександрівна</option>
+                                    <option value="doctor3">Сидоренко Олег Петрович</option>
+                                    <option value="doctor4">Коваленко Наталія Ігорівна</option>
+                                    <option value="doctor5">Мельник Андрій Володимирович</option>
+                                    <option value="doctor6">Шевченко Олена Миколаївна</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" placeholder="Ваш коментар"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Записатися на прийом</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Підвал сайту (такий же як на головній) -->
+    <footer>
+        <!-- Код підвалу такий самий, як на головній сторінці -->
+    </footer>
+
+    <!-- Модальне вікно запису на прийом (таке ж як на головній) -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <!-- Код модального вікна такий самий, як на головній сторінці -->
+    </div>
+
+    <!-- Кнопка "Вгору" -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

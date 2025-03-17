@@ -1,0 +1,1906 @@
+/* Загальні стилі */
+:root {
+    --primary-color: #1e88e5;
+    --secondary-color: #64b5f6;
+    --accent-color: #0d47a1;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --gray-color: #6c757d;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.section-title h2:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: calc(50% - 30px);
+}
+
+.section-title p {
+    font-size: 18px;
+    color: var(--gray-color);
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* Шапка */
+.top-bar {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 0;
+}
+
+.top-bar a {
+    color: #fff;
+}
+
+.top-bar a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.top-bar-contact {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-contact-item {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-contact-item i {
+    margin-right: 5px;
+}
+
+.top-bar-social {
+    text-align: right;
+}
+
+.top-bar-social a {
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
+}
+
+.navbar-nav .dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.navbar-nav .dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+/* Головний банер */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-slide-content {
+    max-width: 600px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-slide-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.hero-slide-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-slider .owl-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.hero-slider .owl-dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.hero-slider .owl-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Переваги */
+.features {
+    background-color: var(--light-color);
+}
+
+.feature-box {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 32px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover .feature-icon {
+    background-color: var(--accent-color);
+    transform: rotateY(180deg);
+}
+
+.feature-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.feature-box p {
+    color: var(--gray-color);
+}
+
+/* Про нас */
+.about-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+.about-stats {
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    font-size: 16px;
+    color: var(--gray-color);
+}
+
+.about-image img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Послуги */
+.services {
+    background-color: var(--light-color);
+}
+
+.service-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.1);
+}
+
+.service-content {
+    padding: 25px;
+}
+
+.service-content h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.service-content p {
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+/* Лікарі */
+.doctors {
+    background-color: #fff;
+}
+
+.doctor-card {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.doctor-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.doctor-card:hover .doctor-image img {
+    transform: scale(1.1);
+}
+
+.doctor-info {
+    padding: 25px;
+}
+
+.doctor-info h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.doctor-info p {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+}
+
+.doctor-social {
+    margin-top: 15px;
+}
+
+.doctor-social a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.doctor-social a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Відгуки */
+.testimonials {
+    background-color: var(--light-color);
+    position: relative;
+}
+
+.testimonial-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin: 15px;
+}
+
+.testimonial-content {
+    position: relative;
+    padding-left: 30px;
+}
+
+.testimonial-content:before {
+    content: '\201C';
+    font-size: 60px;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: -20px;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.testimonial-author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-author-info h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.testimonial-author-info p {
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+.testimonial-rating {
+    color: var(--warning-color);
+    margin-top: 5px;
+}
+
+/* Запис на прийом */
+.appointment {
+    background: linear-gradient(rgba(30, 136, 229, 0.9), rgba(30, 136, 229, 0.9)), url('../images/appointment-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.appointment-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.appointment-content p {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.appointment-benefits {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.appointment-benefits li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.appointment-benefits li i {
+    margin-right: 10px;
+    color: var(--warning-color);
+}
+
+.appointment-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-form .form-control {
+    border-radius: 30px;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+}
+
+.appointment-form textarea.form-control {
+    border-radius: 20px;
+}
+
+/* Блог */
+.blog {
+    background-color: var(--light-color);
+}
+
+.blog-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.1);
+}
+
+.blog-content {
+    padding: 25px;
+}
+
+.blog-date {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.blog-content h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.blog-content p {
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+/* Підвал */
+footer {
+    background-color: var(--dark-color);
+    color: #fff;
+    padding: 80px 0 0;
+}
+
+.footer-widget {
+    margin-bottom: 40px;
+}
+
+.footer-widget h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-widget h3:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-about p {
+    margin-bottom: 20px;
+}
+
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-contact-info li i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.footer-social {
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links li a {
+    color: #fff;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links li a:before {
+    content: '\f105';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.footer-links li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-gallery-item {
+    width: calc(33.333% - 10px);
+    margin: 0 5px 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.footer-gallery-item img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.footer-gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.footer-newsletter p {
+    margin-bottom: 20px;
+}
+
+.footer-newsletter-form {
+    position: relative;
+}
+
+.footer-newsletter-form input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.footer-newsletter-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 0 20px;
+    border-radius: 0 30px 30px 0;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter-form button:hover {
+    background-color: var(--accent-color);
+}
+
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    text-align: center;
+}
+
+/* Кнопка "Вгору" */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+/* Модальне вікно запису на прийом */
+.modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 20px 30px;
+}
+
+.modal-title {
+    font-size: 24px;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    border: none;
+    padding: 0 30px 30px;
+}
+
+/* Сторінка "Про нас" */
+.page-title {
+    background: linear-gradient(rgba(30, 136, 229, 0.9), rgba(30, 136, 229, 0.9)), url('../images/page-title-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.page-title h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.breadcrumb {
+    background: transparent;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item a {
+    color: #fff;
+}
+
+.breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.about-section {
+    padding: 100px 0;
+}
+
+.about-section-image img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-section-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-section-content p {
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+.mission-vision {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.mission-box, .vision-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.mission-box h3, .vision-box h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.mission-box p, .vision-box p {
+    color: var(--gray-color);
+}
+
+.why-choose-us {
+    padding: 100px 0;
+}
+
+.why-choose-item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.why-choose-icon {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 28px;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.why-choose-item:hover .why-choose-icon {
+    background-color: var(--accent-color);
+    transform: rotateY(180deg);
+}
+
+.why-choose-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.why-choose-content p {
+    color: var(--gray-color);
+}
+
+.certificates {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.certificate-item {
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.certificate-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-item img {
+    width: 100%;
+    height: auto;
+}
+
+.team-preview {
+    padding: 100px 0;
+}
+
+.team-member {
+    margin-bottom: 30px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.member-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.member-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.1);
+}
+
+.member-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.member-info h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.member-info p {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+}
+
+/* Сторінка "Послуги" */
+.services-list {
+    padding: 100px 0;
+}
+
+.service-item {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.service-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.service-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-content h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.service-content p {
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+.service-features {
+    margin-bottom: 30px;
+}
+
+.service-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-features ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.service-features ul li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.service-action {
+    display: flex;
+    gap: 15px;
+}
+
+.service-advantages {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.advantage-box {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.advantage-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.advantage-icon {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 32px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.advantage-box:hover .advantage-icon {
+    background-color: var(--accent-color);
+    transform: rotateY(180deg);
+}
+
+.advantage-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.advantage-box p {
+    color: var(--gray-color);
+}
+
+/* Сторінка "Наші лікарі" */
+.doctors-list {
+    padding: 100px 0;
+}
+
+.doctor-detail {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.doctor-detail:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.doctor-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-info h3 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.doctor-position {
+    font-size: 18px;
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+.doctor-experience {
+    margin-bottom: 20px;
+}
+
+.doctor-experience p {
+    margin-bottom: 5px;
+}
+
+.doctor-description {
+    margin-bottom: 20px;
+}
+
+.doctor-description p {
+    color: var(--gray-color);
+    margin-bottom: 10px;
+}
+
+.doctor-specialization {
+    margin-bottom: 30px;
+}
+
+.doctor-specialization h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.doctor-specialization ul {
+    list-style: none;
+    padding: 0;
+}
+
+.doctor-specialization ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.doctor-specialization ul li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* Сторінка "Ціни" */
+.price-list {
+    padding: 100px 0;
+}
+
+.price-category {
+    margin-bottom: 50px;
+}
+
+.price-category h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.price-table {
+    margin-bottom: 30px;
+}
+
+.price-table table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.price-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    padding: 15px;
+    text-align: left;
+}
+
+.price-table td {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.price-table tr:nth-child(even) {
+    background-color: var(--light-color);
+}
+
+.price-action {
+    text-align: center;
+}
+
+.promotions {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.promotion-item {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.promotion-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.promotion-image {
+    position: relative;
+}
+
+.promotion-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.promotion-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.promotion-content {
+    padding: 25px;
+}
+
+.promotion-content h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.promotion-content p {
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+/* Сторінка "Контакти" */
+.contact-info-section {
+    padding: 100px 0;
+}
+
+.contact-info-box {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.contact-info-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 32px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.contact-info-box:hover .contact-icon {
+    background-color: var(--accent-color);
+    transform: rotateY(180deg);
+}
+
+.contact-info-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.contact-info-box p {
+    color: var(--gray-color);
+    margin-bottom: 5px;
+}
+
+.contact-info-box a {
+    color: var(--text-color);
+}
+
+.contact-info-box a:hover {
+    color: var(--primary-color);
+}
+
+.map-section {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.google-map {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.map-directions {
+    margin-top: 30px;
+}
+
+.map-directions h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.direction-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.direction-icon {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 24px;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.direction-item:hover .direction-icon {
+    background-color: var(--accent-color);
+    transform: rotateY(180deg);
+}
+
+.direction-text h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.direction-text p {
+    color: var(--gray-color);
+}
+
+.contact-form-section {
+    padding: 100px 0;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-control {
+    border-radius: 30px;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+}
+
+.contact-form textarea.form-control {
+    border-radius: 20px;
+}
+
+.contact-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.contact-image img {
+    width: 100%;
+    height: auto;
+}
+
+.contact-social {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contact-social h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.contact-social p {
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.faq-section {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.faq-accordion .card {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faq-accordion .card-header {
+    background-color: #fff;
+    border: none;
+    padding: 0;
+}
+
+.faq-accordion .btn-link {
+    width: 100%;
+    text-align: left;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 20px;
+    position: relative;
+    text-decoration: none;
+}
+
+.faq-accordion .btn-link:after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.faq-accordion .btn-link[aria-expanded="true"]:after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-accordion .card-body {
+    padding: 0 20px 20px;
+    color: var(--gray-color);
+}
+
+/* Адаптивність */
+@media (max-width: 1199px) {
+    .hero-slide {
+        height: 500px;
+    }
+    
+    .hero-slide-content {
+        max-width: 500px;
+    }
+    
+    .hero-slide-content h2 {
+        font-size: 32px;
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 28px;
+    }
+    
+    .doctor-image img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 991px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        margin-bottom: 40px;
+    }
+    
+    .section-title h2 {
+        font-size: 32px;
+    }
+    
+    .hero-slide {
+        height: 400px;
+    }
+    
+    .hero-slide-content {
+        max-width: 450px;
+    }
+    
+    .hero-slide-content h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-slide-content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .about-content h2 {
+        font-size: 32px;
+    }
+    
+    .stat-number {
+        font-size: 32px;
+    }
+    
+    .appointment-content h2 {
+        font-size: 32px;
+    }
+    
+    .appointment-benefits li {
+        font-size: 16px;
+    }
+    
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+    
+    .page-title {
+        padding: 80px 0;
+    }
+    
+    .page-title h1 {
+        font-size: 36px;
+    }
+    
+    .about-section, .mission-vision, .why-choose-us, .certificates, .team-preview {
+        padding: 80px 0;
+    }
+    
+    .about-section-content h2 {
+        font-size: 32px;
+    }
+    
+    .mission-box h3, .vision-box h3 {
+        font-size: 24px;
+    }
+    
+    .why-choose-icon {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 24px;
+    }
+    
+    .services-list, .doctors-list, .price-list, .contact-info-section, .map-section, .contact-form-section, .faq-section {
+        padding: 80px 0;
+    }
+    
+    .service-content h3 {
+        font-size: 24px;
+    }
+    
+    .doctor-info h3 {
+        font-size: 24px;
+    }
+    
+    .price-category h3 {
+        font-size: 24px;
+    }
+    
+    .contact-icon, .direction-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 28px;
+    }
+    
+    .map-directions h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 767px) {
+    section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+        font-size: 28px;
+    }
+    
+    .hero-slide {
+        height: 350px;
+    }
+    
+    .hero-slide-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-slide-content h2 {
+        font-size: 24px;
+    }
+    
+    .about-content h2 {
+        font-size: 28px;
+        margin-top: 30px;
+    }
+    
+    .about-image {
+        margin-bottom: 30px;
+    }
+    
+    .appointment-content {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .appointment-content h2 {
+        font-size: 28px;
+    }
+    
+    .footer-widget h3 {
+        font-size: 20px;
+    }
+    
+    .page-title {
+        padding: 60px 0;
+    }
+    
+    .page-title h1 {
+        font-size: 32px;
+    }
+    
+    .about-section, .mission-vision, .why-choose-us, .certificates, .team-preview {
+        padding: 60px 0;
+    }
+    
+    .about-section-content h2 {
+        font-size: 28px;
+        margin-top: 30px;
+    }
+    
+    .mission-box, .vision-box {
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .mission-box h3, .vision-box h3 {
+        font-size: 22px;
+    }
+    
+    .why-choose-icon {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+    }
+    
+    .services-list, .doctors-list, .price-list, .contact-info-section, .map-section, .contact-form-section, .faq-section {
+        padding: 60px 0;
+    }
+    
+    .service-item, .doctor-detail {
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+    }
+    
+    .service-content h3 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+    
+    .doctor-info h3 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+    
+    .price-category h3 {
+        font-size: 22px;
+    }
+    
+    .contact-info-box, .direction-item {
+        margin-bottom: 30px;
+    }
+    
+    .contact-icon, .direction-icon {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 24px;
+    }
+    
+    .map-directions h3 {
+        font-size: 20px;
+    }
+    
+    .contact-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .top-bar {
+        display: none;
+    }
+    
+    .navbar-brand img {
+        height: 40px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .section-title h2 {
+        font-size: 24px;
+    }
+    
+    .hero-slide {
+        height: 300px;
+    }
+    
+    .hero-slide-content h2 {
+        font-size: 22px;
+    }
+    
+    .about-content h2 {
+        font-size: 24px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .appointment-content h2 {
+        font-size: 24px;
+    }
+    
+    .footer-widget h3 {
+        font-size: 18px;
+    }
+    
+    .page-title {
+        padding: 50px 0;
+    }
+    
+    .page-title h1 {
+        font-size: 28px;
+    }
+    
+    .about-section-content h2 {
+        font-size: 24px;
+    }
+    
+    .mission-box h3, .vision-box h3 {
+        font-size: 20px;
+    }
+    
+    .service-content h3 {
+        font-size: 20px;
+    }
+    
+    .doctor-info h3 {
+        font-size: 20px;
+    }
+    
+    .price-category h3 {
+        font-size: 20px;
+    }
+    
+    .contact-info-box h3 {
+        font-size: 20px;
+    }
+    
+    .map-directions h3 {
+        font-size: 18px;
+    }
+    
+    .direction-text h4 {
+        font-size: 18px;
+    }
+    
+    .contact-social h3 {
+        font-size: 20px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+    
+    .faq-accordion .btn-link {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
